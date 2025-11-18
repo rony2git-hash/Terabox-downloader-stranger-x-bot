@@ -1,0 +1,26 @@
+# Docker-based Render deploy
+services:
+- type: web
+name: terabox-userbot
+env: docker
+plan: free
+repo: https://github.com/YOURUSERNAME/terabox-pyro-userbot
+branch: main
+# Render service manifest (example) - adapt after creating the repo on GitHub and linking to Render
+services:
+- type: web
+name: terabox-userbot
+env: python
+region: oregon
+plan: free
+repo: https://github.com/YOURUSERNAME/terabox-pyro-userbot
+branch: main
+buildCommand: ""
+startCommand: "python main.py"
+envVars:
+- key: API_ID
+value: "${API_ID}"
+- key: API_HASH
+value: "${API_HASH}"
+- key: SESSION_NAME
+value: "${SESSION_NAME}"
